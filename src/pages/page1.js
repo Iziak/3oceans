@@ -15,7 +15,7 @@ const DataDiv = styled.div`
 const ContentDiv = styled.div`
   width: 65vw;
   height: 100vh;
-  background-color:purple;
+  background-color:#2B4162;
   color:white;
 `;
 

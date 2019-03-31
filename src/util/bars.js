@@ -25,10 +25,10 @@ const bars = user => {
   const spendingHeight = incomeHigher? spending/income*100:100; 
   return (
     <BarWrapper>
-      Income
+      Debits
       <Bar height={incomeHeight} color="skyblue" />
-      <Bar height={spendingHeight} color="navy" />
-      Spending
+      <Bar height={spendingHeight} color="#2B4162" />
+      Credits
     </BarWrapper>
   )
 }

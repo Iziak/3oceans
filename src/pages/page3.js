@@ -10,7 +10,7 @@ const MainComponent = styled.iframe`
 class Page extends PureComponent {
   render() {
     return (
-      <MainComponent src="http://10.60.46.56:8000/hex.html?layer=calgary">
+      <MainComponent src="http://10.60.46.56:8000/hex.html?layer=calgary&ward=no_ward9">
       </MainComponent>
     );
   }

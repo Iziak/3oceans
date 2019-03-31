@@ -4,6 +4,7 @@ import users from './users.json';
 import UserImage from './userImage';
 import Bars from './bars';
 import Pie from './pie';
+import Location from './location';
 
 const MainComponent = styled.div`
   height:100%;
@@ -24,7 +25,7 @@ const Overlay = styled.div`
   height:100vh;
   background-color:grey;
   opacity:.2;
-  animation: ${grow} 3s linear infinite;
+  animation: ${grow} 10s linear infinite;
 `;
 const ChildWrapper = styled.div`
   position:absolute;
@@ -40,7 +41,7 @@ class User extends PureComponent {
     this.state = { interval: null, user: 0 };
   }
   componentDidMount() {
-    this.setState({ interval: setInterval(this.newUser, 3000) });
+    this.setState({ interval: setInterval(this.newUser, 10000) });
   }
   componentWillUnmount(){
     clearInterval(this.state.interval);
@@ -55,13 +56,18 @@ class User extends PureComponent {
   renderDisplay = user => {
     const i = this.props.display;
     switch(i){
-      case 0:
+      case 1:
         return (
           <Bars user={user}></Bars>
         )
-      case 1:
+      case 2:
+      default:
         return (
           <Pie user={user}></Pie>
+        )
+      case 0:
+        return (
+          <Location user={user}></Location>
         )
     }
   }

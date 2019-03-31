@@ -9,30 +9,30 @@ const MainComponent = styled.div`
   background-color: #000080;
 `;
 const TextCont = styled.div`
-  font-size: 20vh;
+  font-size: 30vh;
   margin: 0 auto;
-  color: white;
-  font-family: helvetica;
-  transition: all 0.5s;
-  transform: ${props => props.track===1?'translate(-30vw, -30vh) scale(.3)':'none'};
+  color:white;
+  font-family:helvetica;
 `;
 const OtherText = styled.div`
   position:absolute;
-  left:50vw;
+  left:25vw;
+  width:50vw;
   color:white;
-  opacity: ${p => p.track===1?'1':'0'};
-  transition: all 1s;
 `;
 
 class Page extends PureComponent {
   render() {
     return (
       <MainComponent>
-        <TextCont track={this.props.track}>Customers at Risk
+        <TextCont>Custome
         </TextCont>
-        <OtherText track={this.props.track}>
-          Using assets and affluence to predict spending confidence <br/><br/>
-          Risk: A ratio of assets held VS income.
+        <OtherText>
+          Amirali <br/>
+          Boris <br/>
+          Brita <br/>
+          Daniel <br/>
+          Isaac <br/>
         </OtherText>
       </MainComponent>
     );
