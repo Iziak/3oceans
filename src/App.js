@@ -1,26 +1,49 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { PureComponent } from 'react';
+import styled from 'styled-components';
+import Nav from './nav';
+import PageContainer from './pageContainer';
 
-class App extends Component {
+const MainComponent = styled.div`
+  height: 100vh;
+  width:100%;
+`;
+
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = { track: 0 };
+  }
+  handleNav = t => {
+    if(t)
+      this.setState({track: this.state.track + 1})
+    else
+      if(this.state.track > 0)
+        this.setState({track: this.state.track - 1})
+    console.log('Track:',this.state.track)
+  }
+  componentDidMount = () => {
+    document.addEventListener("keydown", this.handleKeyPress, false);
+  }
+  componentWillUnmount = () => {
+    document.removeEventListener("keydown", this.handleKeyPress, false);
+  }
+  handleKeyPress = e => {
+    if(e)
+      if(e.keyCode === 39)
+        this.handleNav(true)
+      else if(e.keyCode === 37)
+        this.handleNav(false)
+    e.stopPropagation()
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <MainComponent>
+        <PageContainer track={this.state.track} />
+        <Nav
+          nav={this.handleNav}
+        />
+      </MainComponent>
     );
   }
 }
